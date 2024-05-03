@@ -42,7 +42,7 @@ async def leer_articulo(articulo_id: int):
     return articulo
 
 #Modificar un artículo por su ID
-@app.put("/articulos/{articulo_id}", response_model=Articulo)
+@app.put("/articulos/modificar/{articulo_id}", response_model=Articulo)
 async def modificar_articulo(articulo_id: int, articulo: Articulo):
     idx = next((index for index, art in enumerate(db) if art.id == articulo_id), None)
     if idx is None:
@@ -51,7 +51,7 @@ async def modificar_articulo(articulo_id: int, articulo: Articulo):
     return articulo
 
 #Borrar un artículo por su ID
-@app.delete("/articulos/{articulo_id}", response_model=Articulo)
+@app.delete("/articulos/borrar/{articulo_id}", response_model=Articulo)
 async def borrar_articulo(articulo_id: int):
     idx = next((index for index, art in enumerate(db) if art.id == articulo_id), None)
     if idx is None:
